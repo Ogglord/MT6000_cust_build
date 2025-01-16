@@ -15,9 +15,6 @@ trap 'error_exit $LINENO' ERR
 
 echo "Starting the build process..."
 
-# Navigate to the parent directory
-cd .. || exit 1
-
 # Run make download
 echo "Running 'make download'..."
 make download
