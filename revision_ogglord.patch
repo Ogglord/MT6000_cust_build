@@ -1,0 +1,31 @@
+diff --git a/include/version.mk b/include/version.mk
+index 1ac29b629a..461b4a835b 100644
+--- a/include/version.mk
++++ b/include/version.mk
+@@ -26,7 +26,7 @@ VERSION_NUMBER:=$(call qstrip,$(CONFIG_VERSION_NUMBER))
+ VERSION_NUMBER:=$(if $(VERSION_NUMBER),$(VERSION_NUMBER),SNAPSHOT)
+ 
+ VERSION_CODE:=$(call qstrip,$(CONFIG_VERSION_CODE))
+-VERSION_CODE:=$(if $(VERSION_CODE),$(VERSION_CODE),$(REVISION))
++VERSION_CODE:=$(if $(VERSION_CODE),$(VERSION_CODE),$(REVISION)-ogglord)
+ 
+ VERSION_REPO:=$(call qstrip,$(CONFIG_VERSION_REPO))
+ VERSION_REPO:=$(if $(VERSION_REPO),$(VERSION_REPO),https://downloads.openwrt.org/snapshots)
+@@ -106,4 +106,3 @@ VERSION_SED_SCRIPT:=$(SED) 's,%U,$(call sed_escape,$(VERSION_REPO)),g' \
+ 	-e 's,%P,$(call sed_escape,$(VERSION_PRODUCT)),g' \
+ 	-e 's,%h,$(call sed_escape,$(VERSION_HWREV)),g' \
+ 	-e 's,%B,$(call sed_escape,$(SOURCE_DATE_EPOCH)),g'
+-
+diff --git a/rules.mk b/rules.mk
+index 63e0a432b2..13828d177e 100644
+--- a/rules.mk
++++ b/rules.mk
+@@ -100,7 +100,7 @@ NPROC:=$(shell sysctl -n hw.ncpu 2>/dev/null || nproc)
+ export SHELL:=/usr/bin/env bash
+ DATE:=$(shell date --utc +%Y-%m-%d)
+ VERSION_CODE:=$(call qstrip,$(CONFIG_VERSION_CODE))
+-VERSION_CODE:=$(if $(VERSION_CODE),$(VERSION_CODE),$(REVISION))
++VERSION_CODE:=$(if $(VERSION_CODE),$(VERSION_CODE),$(REVISION)-ogglord)
+ 
+ IS_PACKAGE_BUILD := $(if $(filter package/%,$(BUILD_SUBDIR)),1)
+ 
