@@ -31,6 +31,7 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias ..='cd ..'
+alias btop="btop --utf-force"
 
 # Editor
 export EDITOR="nano"
